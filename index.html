@@ -171,7 +171,7 @@
             width: 60px;
             height: 60px;
             border-radius: 50%;
-            background-color: #e63946;
+            background-color: #35b824;
             color: white;
             display: flex;
             align-items: center;
@@ -236,7 +236,7 @@
                         <div class="card h-100">
                             <div class="card-body">
                                 <h5 class="card-title"><i class="fas fa-user-plus feature-icon"></i>দাতা নিবন্ধন</h5>
-                                <p class="card-text bangla-text">একজন রক্তদাতা হিসেবে নিবন্ধন করুন এবং আপনার রক্ত দান হোক আপনার জীবনের শ্রেষ্ঠ উপহার।</p>
+                                <p class="card-text bangla-text">একজন রক্তদাতা হিসেবে নিবন্ধন করুন এবং "রক্তদাতা হোন, জীবন বাঁচান – আপনার এক বারের রক্তদানই হতে পারে কারও জীবনের সবচেয়ে মূল্যবান উপহার!"</p>
                             </div>
                         </div>
                     </div>
@@ -245,6 +245,8 @@
                             <div class="card-body">
                                 <h5 class="card-title"><i class="fas fa-tint feature-icon"></i>রক্তের অনুরোধ</h5>
                                 <p class="card-text bangla-text">প্রয়োজনে রক্তের অনুরোধ করুন অথবা আপনার দেওয়া রক্তের গ্রুপের  রক্তদাতা খুঁজে তাদের সাথে সংযুক্ত হোন ।</p>
+                                <p class="card-text bangla-text">✅ নিরাপদ রক্তদান: স্বাস্থ্যবিধি মেনে রক্ত পরিসঞ্চালন নিশ্চিত করুন।</p>
+                                <p class="card-text bangla-text">❤️ সহযোগিতার হাত: ডোনারের সুবিধা-অসুবিধার প্রতি সম্মান দেখিয়ে সহায়তা করুন।</p>
                             </div>
                         </div>
                     </div>
@@ -252,7 +254,8 @@
                         <div class="card h-100">
                             <div class="card-body">
                                 <h5 class="card-title"><i class="fas fa-bell feature-icon"></i>তাত্ক্ষণিক বিজ্ঞপ্তি</h5>
-                                <p class="card-text bangla-text">রক্তের প্রয়োজন হলে আপনার দেওয়া রক্তের গ্রুপের রক্তদাতাদের কাছে স্বয়ংক্রিয়ভাবে বিজ্ঞপ্তি পাঠানো হয় ।</p>
+                                <p class="card-text bangla-text">🩸 আপনার রক্তের গ্রুপের উপযুক্ত দাতাদের কাছে স্বয়ংক্রিয়ভাবে বিজ্ঞপ্তি পাঠানো হয়—দ্রুততম সময়ে সাহায্য পেতে পারেন।</p>
+                                <p class="card-text bangla-text">💡 একটি ক্লিকেই জীবন বাঁচানোর সুযোগ! এখনই রিকোয়েস্ট পাঠান এবং উপযুক্ত রক্তদাতার সন্ধান পান।</p>
                             </div>
                         </div>
                     </div>
@@ -376,7 +379,7 @@
                                 </div>
                                 <div class="col-md-6 mb-3 d-flex align-items-end">
                                     <button type="submit" class="btn btn-primary w-100">
-                                        <i class="fas fa-save"></i> দাতা হিসেবে নিবন্ধন করুন
+                                        <i class="fas fa-save"></i> রক্তদাতা হিসেবে নিবন্ধন করুন
                                     </button>
                                 </div>
                             </div>
@@ -455,7 +458,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <button type="submit" class="btn btn-primary w-100">
-                                        <i class="fas fa-bell"></i> রক্তের অনুরোধ পাঠান
+                                        <i class="fas fa-bell"></i> রক্তের অনুরোধ পাঠান এবং WhatsApp SMS এর মাধ্যমে রক্তের অনুরোধ নিশ্চিতকরেন
                                     </button>
                                 </div>
                             </div>
@@ -470,7 +473,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <i class="fas fa-search"></i> রক্তদাতা খুঁজুন
+                        <i class="fas fa-search"></i> সহজেই খুঁজুন উপযুক্ত রক্তদাতা - বিভাগ, জেলা ও রক্তের গ্রুপ সিলেক্ট করে সঠিকভাবে সার্চ করুন!
                     </div>
                     <div class="card-body">
                         <form id="searchForm">
@@ -506,7 +509,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <button type="submit" class="btn btn-primary w-100">
-                                        <i class="fas fa-search"></i> দাতা খুঁজুন
+                                        <i class="fas fa-search"></i>  রক্তদাতা খুঁজুন
                                     </button>
                                 </div>
                             </div>
@@ -1152,43 +1155,64 @@
             }
         }
 
-        // Handle donor form submission
-        donorForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const donorData = {
-                name: document.getElementById('donorName').value,
-                bloodGroup: document.getElementById('donorBloodGroup').value,
-                phone: formatPhoneNumber(document.getElementById('donorPhone').value),
-                division: document.getElementById('donorDivision').value,
-                district: document.getElementById('donorDistrict').value,
-                upazila: document.getElementById('donorUpazila').value,
-                lastDonation: document.getElementById('lastDonationDate').value,
-                registrationDate: new Date().toISOString(),
-                status: "active",
-                availability: "available",
-                fcmToken: localStorage.getItem('fcmToken')
-            };
-            
-            if (!validateDonorForm(donorData)) {
-                return;
+         // Handle donor form submission - MODIFIED VERSION
+    donorForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const donorData = {
+            name: document.getElementById('donorName').value,
+            bloodGroup: document.getElementById('donorBloodGroup').value,
+            phone: formatPhoneNumber(document.getElementById('donorPhone').value),
+            division: document.getElementById('donorDivision').value,
+            district: document.getElementById('donorDistrict').value,
+            upazila: document.getElementById('donorUpazila').value,
+            lastDonation: document.getElementById('lastDonationDate').value,
+            registrationDate: new Date().toISOString(),
+            status: "active",
+            availability: "available",
+            fcmToken: localStorage.getItem('fcmToken')
+        };
+        
+        if (!validateDonorForm(donorData)) {
+            return;
+        }
+        
+        // First check if donor already exists with this phone number
+        const q = query(
+            collection(db, 'donors'),
+            where('phone', '==', donorData.phone),
+            where('status', '==', 'active')
+        );
+        
+        getDocs(q).then(querySnapshot => {
+            if (!querySnapshot.empty) {
+                // Donor already exists
+                document.getElementById('errorMessage').textContent = 
+                    `এই ফোন নম্বর (${donorData.phone}) দিয়ে ইতিমধ্যে একজন রক্তদাতা নিবন্ধিত আছে। একই ফোন নম্বর দিয়ে পুনরায় নিবন্ধন করা সম্ভব নয়।`;
+                errorModal.show();
+            } else {
+                // No existing donor found - proceed with registration
+                addDoc(collection(db, 'donors'), donorData)
+                    .then(() => {
+                        document.getElementById('successMessage').textContent = 
+                            "রক্তদাতা হিসেবে নিবন্ধনে করার জন্য আপনাকে ধন্যবাদ, একটি জীবন বাঁচানোর স্বপ্ন আজ হলো অঙ্কিত! রক্ত দান শুধু উপহার নয়, এটি মহানুভবতার চিহ্ন, আপনার এই দানেই হয়তো কেউ পেল নতুন প্রাণের স্পর্শ!";
+                        successModal.show();
+                        donorForm.reset();
+                        loadDonors();
+                    })
+                    .catch(error => {
+                        document.getElementById('errorMessage').textContent = 
+                            'দাতার তথ্য সংরক্ষণে ত্রুটি: ' + error.message;
+                        errorModal.show();
+                    });
             }
-            
-            // Save to Firestore
-            addDoc(collection(db, 'donors'), donorData)
-                .then(() => {
-                    document.getElementById('successMessage').textContent = 
-                        "রক্তদাতা হিসেবে নিবন্ধনে আপনাকে ধন্যবাদ, একটি জীবন বাঁচানোর স্বপ্ন আজ হলো অঙ্কিত! রক্ত দান শুধু উপহার নয়, এটি মহানুভবতার চিহ্ন, আপনার এই দানেই হয়তো কেউ পেল নতুন প্রাণের স্পর্শ!";
-                    successModal.show();
-                    donorForm.reset();
-                    loadDonors();
-                })
-                .catch(error => {
-                    document.getElementById('errorMessage').textContent = 
-                        'দাতার তথ্য সংরক্ষণে ত্রুটি: ' + error.message;
-                    errorModal.show();
-                });
+        }).catch(error => {
+            document.getElementById('errorMessage').textContent = 
+                'দাতা খোঁজার সময় ত্রুটি: ' + error.message;
+            errorModal.show();
         });
+    });
+
 
         // Handle blood request form submission
         requestForm.addEventListener('submit', function(e) {
