@@ -231,6 +231,26 @@
             font-size: 0.9rem;
             color: #6c757d;
         }
+        
+        /* Form validation styles */
+        .is-invalid {
+            border-color: #dc3545;
+        }
+        
+        .invalid-feedback {
+            color: #dc3545;
+            font-size: 0.875em;
+            display: none;
+        }
+        
+        .was-validated .form-control:invalid ~ .invalid-feedback,
+        .was-validated .form-select:invalid ~ .invalid-feedback {
+            display: block;
+        }
+        
+        .form-control:invalid, .form-select:invalid {
+            border-color: #dc3545;
+        }
     </style>
 </head>
 
@@ -319,14 +339,17 @@
                                     <option value="O+">O+</option>
                                     <option value="O-">O-</option>
                                 </select>
+                                <div class="invalid-feedback">রক্তের গ্রুপ নির্বাচন করুন</div>
                             </div>
                             <div class="mb-3">
                                 <label for="emergencyLocation" class="form-label">স্থান (হাসপাতাল/ঠিকানা)</label>
                                 <input type="text" class="form-control" id="emergencyLocation" required>
+                                <div class="invalid-feedback">স্থান লিখুন</div>
                             </div>
                             <div class="mb-3">
                                 <label for="emergencyPhone" class="form-label">যোগাযোগ নম্বর (whatsapp number)</label>
                                 <input type="tel" class="form-control" id="emergencyPhone" required>
+                                <div class="invalid-feedback">সঠিক মোবাইল নম্বর লিখুন (01XXXXXXXXX)</div>
                             </div>
                             <div class="mb-3">
                                 <label for="emergencyDetails" class="form-label">অতিরিক্ত তথ্য (ঐচ্ছিক)</label>
@@ -352,11 +375,12 @@
                         <i class="fas fa-user-plus"></i> দাতা নিবন্ধন ফর্ম
                     </div>
                     <div class="card-body">
-                        <form id="donorForm">
+                        <form id="donorForm" class="needs-validation" novalidate>
                             <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <label for="donorName" class="form-label">নাম</label>
                                     <input type="text" class="form-control" id="donorName" required>
+                                    <div class="invalid-feedback">নাম লিখুন</div>
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label for="donorBloodGroup" class="form-label">রক্তের গ্রুপ</label>
@@ -371,12 +395,14 @@
                                         <option value="O+">O+</option>
                                         <option value="O-">O-</option>
                                     </select>
+                                    <div class="invalid-feedback">রক্তের গ্রুপ নির্বাচন করুন</div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <label for="donorPhone" class="form-label">মোবাইল নম্বর (whatsapp number)</label>
-                                    <input type="tel" class="form-control" id="donorPhone" required>
+                                    <input type="tel" class="form-control" id="donorPhone" required pattern="^(01[3-9]\d{8})$">
+                                    <div class="invalid-feedback">সঠিক মোবাইল নম্বর লিখুন (01XXXXXXXXX)</div>
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label for="lastDonationDate" class="form-label">সর্বশেষ রক্তদানের তারিখ</label>
@@ -390,12 +416,14 @@
                                         <option value="" selected disabled>বিভাগ নির্বাচন করুন</option>
                                         <!-- Divisions will be populated by JavaScript -->
                                     </select>
+                                    <div class="invalid-feedback">বিভাগ নির্বাচন করুন</div>
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label for="donorDistrict" class="form-label">জেলা</label>
                                     <select class="form-select" id="donorDistrict" required disabled>
                                         <option value="" selected disabled>জেলা নির্বাচন করুন</option>
                                     </select>
+                                    <div class="invalid-feedback">জেলা নির্বাচন করুন</div>
                                 </div>
                             </div>
                             <div class="row">
@@ -404,6 +432,7 @@
                                     <select class="form-select" id="donorUpazila" required disabled>
                                         <option value="" selected disabled>উপজেলা নির্বাচন করুন</option>
                                     </select>
+                                    <div class="invalid-feedback">উপজেলা নির্বাচন করুন</div>
                                 </div>
                                 <div class="col-md-6 mb-3 d-flex align-items-end">
                                     <button type="submit" class="btn btn-primary w-100">
@@ -425,7 +454,7 @@
                         <i class="fas fa-tint"></i> রক্তের অনুরোধ ফর্ম
                     </div>
                     <div class="card-body">
-                        <form id="requestForm">
+                        <form id="requestForm" class="needs-validation" novalidate>
                             <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <label for="requestDivision" class="form-label">বিভাগ</label>
@@ -433,12 +462,14 @@
                                         <option value="" selected disabled>বিভাগ নির্বাচন করুন</option>
                                         <!-- Divisions will be populated by JavaScript -->
                                     </select>
+                                    <div class="invalid-feedback">বিভাগ নির্বাচন করুন</div>
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label for="requestDistrict" class="form-label">জেলা</label>
                                     <select class="form-select" id="requestDistrict" required disabled>
                                         <option value="" selected disabled>জেলা নির্বাচন করুন</option>
                                     </select>
+                                    <div class="invalid-feedback">জেলা নির্বাচন করুন</div>
                                 </div>
                             </div>
                             <div class="row">
@@ -447,11 +478,13 @@
                                     <select class="form-select" id="requestUpazila" required disabled>
                                         <option value="" selected disabled>উপজেলা নির্বাচন করুন</option>
                                     </select>
+                                    <div class="invalid-feedback">উপজেলা নির্বাচন করুন</div>
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label for="requestLocation" class="form-label">রক্তদানের স্থান
                                         (হাসপাতাল/ঠিকানা)</label>
                                     <input type="text" class="form-control" id="requestLocation" required>
+                                    <div class="invalid-feedback">রক্তদানের স্থান লিখুন</div>
                                 </div>
                             </div>
                             <div class="row">
@@ -468,22 +501,26 @@
                                         <option value="O+">O+</option>
                                         <option value="O-">O-</option>
                                     </select>
+                                    <div class="invalid-feedback">রক্তের গ্রুপ নির্বাচন করুন</div>
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label for="bloodAmount" class="form-label">রক্তের পরিমাণ (ব্যাগ)</label>
                                     <input type="number" class="form-control" id="bloodAmount" min="1" value="1"
                                         required>
+                                    <div class="invalid-feedback">রক্তের পরিমাণ লিখুন (অন্তত 1 ব্যাগ)</div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <label for="requesterPhone" class="form-label">যোগাযোগ নম্বর (whatsapp
                                         number)</label>
-                                    <input type="tel" class="form-control" id="requesterPhone" required>
+                                    <input type="tel" class="form-control" id="requesterPhone" required pattern="^(01[3-9]\d{8})$">
+                                    <div class="invalid-feedback">সঠিক মোবাইল নম্বর লিখুন (01XXXXXXXXX)</div>
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label for="requiredDateTime" class="form-label">প্রয়োজনীয় তারিখ ও সময়</label>
                                     <input type="datetime-local" class="form-control" id="requiredDateTime" required>
+                                    <div class="invalid-feedback">তারিখ ও সময় নির্বাচন করুন</div>
                                 </div>
                             </div>
                             <div class="row">
@@ -696,14 +733,16 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="updateDonationForm">
+                    <form id="updateDonationForm" class="needs-validation" novalidate>
                         <div class="mb-3">
                             <label for="updatePhone" class="form-label">আপনার মোবাইল নম্বর</label>
-                            <input type="tel" class="form-control" id="updatePhone" required placeholder="01XXXXXXXXX">
+                            <input type="tel" class="form-control" id="updatePhone" required placeholder="01XXXXXXXXX" pattern="^(01[3-9]\d{8})$">
+                            <div class="invalid-feedback">সঠিক মোবাইল নম্বর লিখুন (01XXXXXXXXX)</div>
                         </div>
                         <div class="mb-3">
                             <label for="updateDonationDate" class="form-label">সর্বশেষ রক্তদানের তারিখ</label>
                             <input type="date" class="form-control" id="updateDonationDate" required>
+                            <div class="invalid-feedback">তারিখ নির্বাচন করুন</div>
                         </div>
                     </form>
                 </div>
@@ -1072,7 +1111,28 @@
                 "8801960506601",
                 `জরুরি রক্তের আবেদন:\n\nজরুরি রক্তের প্রয়োজন!\nবিভাগ: ______\nজেলা: ______\nউপজেলা: ______\nরক্তদানের স্থান: ______\nরক্তের গ্রুপ: ______\nরক্তের পরিমাণ: ______\nযোগাযোগ: ______\nপ্রয়োজনীয় তারিখ: ______`
             );
+            
+            // Enable form validation
+            setupFormValidation();
         });
+
+        // Setup form validation
+        function setupFormValidation() {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            const forms = document.querySelectorAll('.needs-validation');
+
+            // Loop over them and prevent submission
+            Array.from(forms).forEach(form => {
+                form.addEventListener('submit', event => {
+                    if (!form.checkValidity()) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }
 
         // WhatsApp link generator
         function generateWhatsAppLink(phone, message) {
@@ -1230,6 +1290,11 @@
         // Handle donor form submission
         donorForm.addEventListener('submit', async function (e) {
             e.preventDefault();
+            
+            if (!donorForm.checkValidity()) {
+                e.stopPropagation();
+                return;
+            }
 
             const donorData = {
                 name: document.getElementById('donorName').value,
@@ -1244,10 +1309,6 @@
                 availability: "available",
                 fcmToken: localStorage.getItem('fcmToken')
             };
-
-            if (!validateDonorForm(donorData)) {
-                return;
-            }
 
             try {
                 // Check if donor already exists
@@ -1273,6 +1334,7 @@
                     "রক্তদাতা হিসেবে নিবন্ধনে করার জন্য আপনাকে ধন্যবাদ, একটি জীবন বাঁচানোর স্বপ্ন আজ হলো অঙ্কিত! রক্ত দান শুধু উপহার নয়, এটি মহানুভবতার চিহ্ন, আপনার এই দানেই হয়তো কেউ পেল নতুন প্রাণের স্পর্শ!";
                 successModal.show();
                 donorForm.reset();
+                donorForm.classList.remove('was-validated');
                 loadDonors();
             } catch (error) {
                 document.getElementById('errorMessage').textContent =
@@ -1284,6 +1346,11 @@
         // Handle blood request form submission
         requestForm.addEventListener('submit', async function (e) {
             e.preventDefault();
+            
+            if (!requestForm.checkValidity()) {
+                e.stopPropagation();
+                return;
+            }
 
             const requestData = {
                 division: document.getElementById('requestDivision').value,
@@ -1311,7 +1378,7 @@
                 const whatsappLink = generateWhatsAppLink("8801960506601", whatsappMessage);
 
                 document.getElementById('successMessage').textContent =
-                    `রক্তের অনুরোধ সফলভাবে জমা দেওয়া হয়েছে! আপনার রক্তের গ্রুপের উপযুক্ত রক্ত দাতাদের কাছে SMS এ বিজ্ঞপ্তি পাঠানো হবে।
+                    `রক্তের অনুরোধ সফলভাবে জমা দেওয়া হয়েছে! আপনার রক্তের গ্রুপের উপযুক্ত দাতাদের কাছে SMS এ বিজ্ঞপ্তি পাঠানো হবে।
                      
                     অবস্থান: ${requestData.district}, ${requestData.upazila}
                     রক্তের গ্রুপ: ${requestData.bloodGroup}
@@ -1321,6 +1388,7 @@
 
                 successModal.show();
                 requestForm.reset();
+                requestForm.classList.remove('was-validated');
 
                 // Open WhatsApp
                 window.open(whatsappLink, '_blank');
@@ -1432,6 +1500,11 @@
 
         // Handle update donation button click
         updateDonationBtn.addEventListener('click', async function () {
+            if (!updateDonationForm.checkValidity()) {
+                updateDonationForm.classList.add('was-validated');
+                return;
+            }
+
             const phone = document.getElementById('updatePhone').value;
             const newDonationDate = document.getElementById('updateDonationDate').value;
 
@@ -1441,6 +1514,7 @@
                 document.getElementById('successMessage').textContent = result.message;
                 successModal.show();
                 updateDonationForm.reset();
+                updateDonationForm.classList.remove('was-validated');
                 updateDonationModal.hide();
                 loadDonors();
             } else {
@@ -1582,34 +1656,6 @@
             }
 
             return cleaned;
-        }
-
-        // Validate donor form
-        function validateDonorForm(donor) {
-            if (!donor.name || !donor.bloodGroup || !donor.phone ||
-                !donor.division || !donor.district || !donor.upazila) {
-                showAlert('সমস্ত প্রয়োজনীয় তথ্য প্রদান করুন', 'error');
-                return false;
-            }
-
-            if (!/^(01[3-9]\d{8})$/.test(donor.phone)) {
-                showAlert('সঠিক বাংলাদেশী মোবাইল নম্বর দিন (01XXXXXXXXX)', 'error');
-                return false;
-            }
-
-            return true;
-        }
-
-        // Show alert message
-        function showAlert(message, type) {
-            const alertDiv = document.createElement('div');
-            alertDiv.className = `alert alert-${type === 'error' ? 'danger' : 'success'} alert-fixed`;
-            alertDiv.textContent = message;
-            document.body.appendChild(alertDiv);
-
-            setTimeout(() => {
-                alertDiv.remove();
-            }, 3000);
         }
 
         // Auto-refresh every 5 minutes
