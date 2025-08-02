@@ -437,44 +437,23 @@
         Developed by MD Tasrik Hossain
     </div>
 
-    <!-- Firebase and other scripts -->
     <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
-        import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
-
-        const firebaseConfig = {
-            apiKey: "AIzaSyBSgyeYCbyB8cMFdqMcNtDZeL4aM-_FfQ4",
-            authDomain: "rjf-blood-connect.firebaseapp.com",
-            databaseURL: "https://rjf-blood-connect-default-rtdb.asia-southeast1.firebasedatabase.app",
-            projectId: "rjf-blood-connect",
-            storageBucket: "rjf-blood-connect.firebasestorage.app",
-            messagingSenderId: "536870508483",
-            appId: "1:536870508483:web:1ce2211ec28f79ce514f76",
-            measurementId: "G-34RDD8GL9C"
-        };
-
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
-
         document.addEventListener('DOMContentLoaded', function () {
             // Form validation
             const form = document.getElementById('emergencyForm');
 
-            form.addEventListener('submit', async function (e) {
+            form.addEventListener('submit', function (e) {
                 e.preventDefault();
 
                 if (form.checkValidity()) {
                     try {
+                        // Collect form data
                         const emergencyData = {
                             bloodGroup: document.getElementById('emergencyBloodGroup').value,
                             location: document.getElementById('emergencyLocation').value,
                             phone: document.getElementById('emergencyPhone').value,
-                            details: document.getElementById('emergencyDetails').value,
-                            createdAt: new Date()
+                            details: document.getElementById('emergencyDetails').value
                         };
-
-                        // Add to Firebase
-                        const docRef = await addDoc(collection(db, "emergencyRequests"), emergencyData);
 
                         // Prepare WhatsApp message
                         const whatsappMessage = `*জরুরি রক্তের আবেদন*\n\n` +
@@ -482,7 +461,7 @@
                             `স্থান: ${emergencyData.location}\n` +
                             `যোগাযোগ নম্বর: ${emergencyData.phone}\n` +
                             `অতিরিক্ত তথ্য: ${emergencyData.details || 'N/A'}\n\n` +
-                            `এই আবেদনটি RJF Blood Connect এর মাধ্যমে পাঠানো হয়েছে।`;
+                            `এই আবেদনটি জরুরি রক্তের আবেদন ফর্ম থেকে পাঠানো হয়েছে।`;
 
                         // Encode message for URL
                         const encodedMessage = encodeURIComponent(whatsappMessage);
@@ -492,7 +471,7 @@
 
                         // Show success message
                         document.getElementById('successMessage').textContent =
-                            "জরুরি অনুরোধ সফলভাবে পাঠানো হয়েছে! আমাদের টিম শীঘ্রই আপনার সাথে যোগাযোগ করবে।";
+                            "জরুরি অনুরোধ WhatsApp-এ পাঠানো হয়েছে! আমাদের RJF Blood Connect এর টিম শীঘ্রই আপনার সাথে যোগাযোগ করবে।";
                         const successModal = new bootstrap.Modal(document.getElementById('successModal'));
                         successModal.show();
 
@@ -500,7 +479,7 @@
                         form.reset();
                         form.classList.remove('was-validated');
                     } catch (error) {
-                        console.error("Error adding emergency request: ", error);
+                        console.error("Error:", error);
                         document.getElementById('errorMessage').textContent =
                             "ত্রুটি ঘটেছে, অনুগ্রহ করে পরে আবার চেষ্টা করুন";
                         const errorModal = new bootstrap.Modal(document.getElementById('errorModal'));
@@ -521,40 +500,40 @@
                     phoneInput.setCustomValidity("");
                 }
             });
+
+            // Function to update time and date separately
+            function updateDateTime() {
+                const now = new Date();
+
+                // Time options
+                const timeOptions = {
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit',
+                    hour12: true
+                };
+
+                // Date options
+                const dateOptions = {
+                    weekday: 'long',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                };
+
+                document.getElementById('currentTime').textContent = now.toLocaleTimeString('bn-BD', timeOptions);
+                document.getElementById('currentDate').textContent = now.toLocaleDateString('bn-BD', dateOptions);
+            }
+
+            // Update every second
+            setInterval(updateDateTime, 1000);
+
+            // Initial call
+            updateDateTime();
         });
-        // Function to update time and date separately
-        function updateDateTime() {
-            const now = new Date();
-
-            // Time options
-            const timeOptions = {
-                hour: '2-digit',
-                minute: '2-digit',
-                second: '2-digit',
-                hour12: true
-            };
-
-            // Date options
-            const dateOptions = {
-                weekday: 'long',
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-            };
-
-            document.getElementById('currentTime').textContent = now.toLocaleTimeString('bn-BD', timeOptions);
-            document.getElementById('currentDate').textContent = now.toLocaleDateString('bn-BD', dateOptions);
-        }
-
-        // Update every second
-        setInterval(updateDateTime, 1000);
-
-        // Initial call
-        updateDateTime();
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
 </body>
 
 </html>
-
