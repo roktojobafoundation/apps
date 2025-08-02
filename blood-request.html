@@ -356,7 +356,7 @@
                     await sendBloodRequestNotifications(requestData);
 
                     // Generate WhatsApp message
-                    const whatsappMessage = `রক্তের অনুরোধ নিশ্চিতকরণ:\n\nবিভাগ: ${requestData.division}\nজেলা: ${requestData.district}\nউপজেলা: ${requestData.upazila}\nস্থান: ${requestData.location}\nরক্তের গ্রুপ: ${requestData.bloodGroup}\nপরিমাণ: ${requestData.amount} ব্যাগ\nযোগাযোগ: ${requestData.phone}\nতারিখ: ${neededDate}\nসময়: ${neededTime}`;
+                    const whatsappMessage = `রক্তের অনুরোধ নিশ্চিতকরণ:\n\nবিভাগ: ${requestData.division}\nজেলা: ${requestData.district}\nউপজেলা: ${requestData.upazila}\nস্থান: ${requestData.location}\nরক্তের গ্রুপ: ${requestData.bloodGroup}\nপরিমাণ: ${requestData.bloodAmount} ব্যাগ\nযোগাযোগ: ${requestData.phone}\nতারিখ: ${neededDate}\nসময়: ${neededTime}`;
 
                     // Generate WhatsApp link 
                     const whatsappLink = generateWhatsAppLink("8801960506601", whatsappMessage);
@@ -370,7 +370,7 @@
              
             অবস্থান: ${requestData.district}, ${requestData.upazila}
             রক্তের গ্রুপ: ${requestData.bloodGroup}
-            পরিমাণ: ${requestData.amount} ব্যাগ
+            পরিমাণ: ${requestData.bloodAmount} ব্যাগ
             যোগাযোগ: ${requestData.phone}
             তারিখ: ${neededDate}
             সময়: ${neededTime}`;
@@ -440,4 +440,3 @@
 </body>
 
 </html>
-
