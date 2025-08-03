@@ -25,27 +25,48 @@
                     <!-- Empty left side -->
                 </div>
                 <div class="col-6 text-end">
-                    <div id="currentDate" class="bangla-text date-display"></div>
+                    <div id="currentDate" class="bangla-text date-display small"></div>
                     <div id="currentTime" class="bangla-text time-display"></div>
                 </div>
             </div>
         </div>
 
-        <div class="container-fluid">
+        <div class="container-fluid py-2">
             <div class="row align-items-center">
                 <div class="col-2">
-                    <img src="roktojoba-logo.png" alt="Roktojoba Foundation Logo" class="logo">
+                    <img src="roktojoba-logo.png" alt="Roktojoba Foundation Logo" class="logo img-fluid">
                 </div>
                 <div class="col-8 text-center">
-                    <h1>RJF Blood Connect</h1>
-                    <p class="tagline">Blood Donate. Connect. Save</p>
+                    <h2 class="mb-1">RJF Blood Connect</h2>
+                    <p class="tagline mb-0">
+                        <span class="badge bg-danger">
+                            <i class="fas fa-heart me-1"></i> Blood Donate. Connect. Save
+                        </span>
+                    </p>
                 </div>
                 <div class="col-2 text-end">
-                    <!-- You can keep this empty or add something else -->
+                    <button class="btn btn-sm btn-outline-danger" data-bs-toggle="modal"
+                        data-bs-target="#quickHelpModal">
+                        <i class="fas fa-question-circle"></i> সাহায্য
+                    </button>
                 </div>
             </div>
         </div>
     </header>
+
+    <!-- Quick Stats Banner -->
+    <div class="container-fluid bg-warning py-2" style="background-color: #FFD700 !important;">
+        <div class="row text-center">
+            <div class="col p-0">
+                <marquee behavior="scroll" direction="left" class="bangla-text small"
+                    style="color: #FF0000; font-weight: 500; font-size: 1.1rem;">
+                    <i class="fas fa-tint me-2"></i> আসসালামু আলাইকুম RJF Blood Connect অ্যাপ এ আপনাকে স্বাগতম ।। জরুরী
+                    রক্তের প্রয়োজন? <strong style="color: #000000;">01960 506 601</strong>
+                    নাম্বারে কল করুন অথবা <strong style="color: #0d00ff;">রক্তের অনুরোধ</strong> বাটনে ক্লিক করুন।
+                </marquee>
+            </div>
+        </div>
+    </div>
 
     <!-- Updated Stats Section -->
     <div class="stats-section py-4">
@@ -219,26 +240,41 @@
 
     <!-- Update Donation Date Modal -->
     <div class="modal fade" id="updateDonationModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header bg-primary text-white">
-                    <h5 class="modal-title">রক্তদানের তারিখ আপডেট করুন</h5>
+                    <h5 class="modal-title bangla-text">
+                        <i class="fas fa-calendar-alt me-2"></i> রক্তদানের তারিখ আপডেট করুন
+                    </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
+                    <div class="alert alert-info bangla-text small mb-3">
+                        <i class="fas fa-info-circle me-2"></i> রক্তদানের পরবর্তী ৩ মাস আবার রক্ত দিতে পারবেন না। সঠিক
+                        তারিখ লিখুন।
+                    </div>
                     <form id="updateDonationForm">
                         <div class="mb-3">
-                            <label for="donorPhoneUpdate" class="form-label">মোবাইল নম্বর</label>
-                            <input type="tel" class="form-control" id="donorPhoneUpdate" required
-                                pattern="^(01[3-9]\d{8})$">
-                            <div class="invalid-feedback">সঠিক মোবাইল নম্বর লিখুন (01XXXXXXXXX)</div>
+                            <label for="donorPhoneUpdate" class="form-label bangla-text">
+                                <i class="fas fa-mobile-alt me-1"></i> মোবাইল নম্বর
+                            </label>
+                            <div class="input-group">
+                                <span class="input-group-text">+88</span>
+                                <input type="tel" class="form-control" id="donorPhoneUpdate" placeholder="01XXXXXXXXX"
+                                    required pattern="^(01[3-9]\d{8})$">
+                            </div>
+                            <div class="invalid-feedback bangla-text">সঠিক মোবাইল নম্বর লিখুন (01XXXXXXXXX)</div>
                         </div>
                         <div class="mb-3">
-                            <label for="lastDonationUpdate" class="form-label">সর্বশেষ রক্তদানের তারিখ</label>
+                            <label for="lastDonationUpdate" class="form-label bangla-text">
+                                <i class="fas fa-calendar-day me-1"></i> সর্বশেষ রক্তদানের তারিখ
+                            </label>
                             <input type="date" class="form-control" id="lastDonationUpdate" required>
-                            <div class="invalid-feedback">তারিখ নির্বাচন করুন</div>
+                            <div class="invalid-feedback bangla-text">তারিখ নির্বাচন করুন</div>
                         </div>
-                        <button type="submit" class="btn btn-primary w-100">আপডেট করুন</button>
+                        <button type="submit" class="btn btn-primary w-100 bangla-text">
+                            <i class="fas fa-save me-1"></i> আপডেট করুন
+                        </button>
                     </form>
                 </div>
             </div>
@@ -247,32 +283,276 @@
 
     <!-- Vote Donation Modal -->
     <div class="modal fade" id="voteDonationModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header bg-success text-white">
-                    <h5 class="modal-title">সফল রক্তদান রিপোর্ট করুন</h5>
+                    <h5 class="modal-title bangla-text">
+                        <i class="fas fa-check-circle me-2"></i> সফল রক্তদান রিপোর্ট করুন
+                    </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
+                    <div class="alert alert-success bangla-text small mb-3">
+                        <i class="fas fa-lightbulb me-2"></i> রক্তদান সফল হলে অবশ্যই রিপোর্ট করুন। এতে আমাদের ডাটাবেস
+                        আপডেট হবে এবং অন্যান্য ব্যবহারকারীরা সঠিক তথ্য পাবে।
+                    </div>
                     <form id="voteDonationForm">
                         <div class="mb-3">
-                            <label for="requestPhone" class="form-label">অনুরোধকারীর মোবাইল নম্বর</label>
-                            <input type="tel" class="form-control" id="requestPhone" required
-                                pattern="^(01[3-9]\d{8})$">
-                            <div class="invalid-feedback">সঠিক মোবাইল নম্বর লিখুন (01XXXXXXXXX)</div>
+                            <label for="requestPhone" class="form-label bangla-text">
+                                <i class="fas fa-phone me-1"></i> অনুরোধকারীর মোবাইল নম্বর
+                            </label>
+                            <div class="input-group">
+                                <span class="input-group-text">+88</span>
+                                <input type="tel" class="form-control" id="requestPhone" placeholder="01XXXXXXXXX"
+                                    required pattern="^(01[3-9]\d{8})$">
+                            </div>
+                            <div class="invalid-feedback bangla-text">সঠিক মোবাইল নম্বর লিখুন (01XXXXXXXXX)</div>
                         </div>
                         <div class="mb-3">
-                            <label for="donorPhone" class="form-label">রক্তদাতার মোবাইল নম্বর</label>
-                            <input type="tel" class="form-control" id="donorPhone" required pattern="^(01[3-9]\d{8})$">
-                            <div class="invalid-feedback">সঠিক মোবাইল নম্বর লিখুন (01XXXXXXXXX)</div>
+                            <label for="donorPhone" class="form-label bangla-text">
+                                <i class="fas fa-user me-1"></i> রক্তদাতার মোবাইল নম্বর
+                            </label>
+                            <div class="input-group">
+                                <span class="input-group-text">+88</span>
+                                <input type="tel" class="form-control" id="donorPhone" placeholder="01XXXXXXXXX"
+                                    required pattern="^(01[3-9]\d{8})$">
+                            </div>
+                            <div class="invalid-feedback bangla-text">সঠিক মোবাইল নম্বর লিখুন (01XXXXXXXXX)</div>
                         </div>
                         <div class="mb-3">
-                            <label for="donationDate" class="form-label">রক্তদানের তারিখ</label>
+                            <label for="donationDate" class="form-label bangla-text">
+                                <i class="fas fa-calendar-check me-1"></i> রক্তদানের তারিখ
+                            </label>
                             <input type="date" class="form-control" id="donationDate" required>
-                            <div class="invalid-feedback">তারিখ নির্বাচন করুন</div>
+                            <div class="invalid-feedback bangla-text">তারিখ নির্বাচন করুন</div>
                         </div>
-                        <button type="submit" class="btn btn-success w-100">জমা দিন</button>
+                        <button type="submit" class="btn btn-success w-100 bangla-text">
+                            <i class="fas fa-paper-plane me-1"></i> জমা দিন
+                        </button>
                     </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Help Modal - Improved Version -->
+    <div class="modal fade" id="quickHelpModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title bangla-text">
+                        <i class="fas fa-question-circle me-2"></i> দ্রুত সাহায্য কেন্দ্র
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <div class="accordion" id="helpAccordion">
+                        <!-- How to Find Donors -->
+                        <div class="accordion-item border-top-0">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button bangla-text fw-medium" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#helpOne" aria-expanded="true">
+                                    <i class="fas fa-search me-2 text-primary"></i> কিভাবে রক্তদাতা খুঁজব?
+                                </button>
+                            </h2>
+                            <div id="helpOne" class="accordion-collapse collapse show" data-bs-parent="#helpAccordion">
+                                <div class="accordion-body small bangla-text bg-light">
+                                    <div class="alert alert-primary bangla-text small">
+                                        <i class="fas fa-lightbulb me-2"></i> রক্তদাতা খুঁজে পেতে এই সহজ ধাপগুলো অনুসরণ
+                                        করুন
+                                    </div>
+                                    <ol class="list-group list-group-numbered">
+                                        <li class="list-group-item border-0 bg-transparent ps-0">হোম পেইজে
+                                            <strong>"রক্তদাতা খুঁজুন"</strong> বাটনে ক্লিক করুন</li>
+                                        <li class="list-group-item border-0 bg-transparent ps-0">আপনার <strong>বিভাগ,
+                                                জেলা এবং রক্তের গ্রুপ</strong> নির্বাচন করুন</li>
+                                        <li class="list-group-item border-0 bg-transparent ps-0">
+                                            <strong>"খুঁজুন"</strong> বাটনে ক্লিক করুন</li>
+                                        <li class="list-group-item border-0 bg-transparent ps-0">প্রাপ্ত রক্তদাতাদের
+                                            তালিকা থেকে <strong>সরাসরি কল করুন বা WhatsApp</strong> করুন</li>
+                                    </ol>
+                                    <div class="mt-3 text-center">
+                                        <a href="donor-search.html" class="btn btn-sm btn-primary">
+                                            <i class="fas fa-search me-1"></i> এখনই রক্তদাতা খুঁজুন
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- How to Request Blood -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed bangla-text fw-medium" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#helpTwo">
+                                    <i class="fas fa-tint me-2 text-danger"></i> রক্তের অনুরোধ কিভাবে করব?
+                                </button>
+                            </h2>
+                            <div id="helpTwo" class="accordion-collapse collapse" data-bs-parent="#helpAccordion">
+                                <div class="accordion-body small bangla-text bg-light">
+                                    <div class="alert alert-danger bangla-text small">
+                                        <i class="fas fa-exclamation-triangle me-2"></i> জরুরী রক্তের প্রয়োজন হলে এই
+                                        পদ্ধতি অনুসরণ করুন
+                                    </div>
+                                    <ol class="list-group list-group-numbered">
+                                        <li class="list-group-item border-0 bg-transparent ps-0">হোম পেইজে
+                                            <strong>"রক্তের অনুরোধ"</strong> বাটনে ক্লিক করুন</li>
+                                        <li class="list-group-item border-0 bg-transparent ps-0">ফর্মটি পূরণ করুন:
+                                            <ul class="mt-2">
+                                                <li>বিভাগ, জেলা, উপজেলা</li>
+                                                <li>হাসপাতাল/রক্তদানের স্থান</li>
+                                                <li>রক্তের গ্রুপ ও পরিমাণ</li>
+                                                <li><strong>সচল WhatsApp নম্বর</strong> (অবশ্যই প্রদান করুন)</li>
+                                                <li>প্রয়োজনীয় তারিখ ও সময়</li>
+                                            </ul>
+                                        </li>
+                                        <li class="list-group-item border-0 bg-transparent ps-0"><strong>"অনুরোধ
+                                                পাঠান"</strong> বাটনে ক্লিক করুন</li>
+                                        <li class="list-group-item border-0 bg-transparent ps-0">WhatsApp/SMS এর মাধ্যমে
+                                            নিশ্চিত করুন</li>
+                                        <li class="list-group-item border-0 bg-transparent ps-0">আপনার অনুরোধ সিস্টেমে
+                                            যুক্ত হবে এবং সংশ্লিষ্ট রক্তদাতাদের কাছে বিজ্ঞপ্তি পাঠানো হবে</li>
+                                    </ol>
+                                    <div class="mt-3 text-center">
+                                        <a href="blood-request.html" class="btn btn-sm btn-danger">
+                                            <i class="fas fa-tint me-1"></i> এখনই রক্তের অনুরোধ করুন
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- How to Register as Donor -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed bangla-text fw-medium" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#helpThree">
+                                    <i class="fas fa-user-plus me-2 text-success"></i> রক্তদাতা হিসেবে নিবন্ধন কিভাবে
+                                    করব?
+                                </button>
+                            </h2>
+                            <div id="helpThree" class="accordion-collapse collapse" data-bs-parent="#helpAccordion">
+                                <div class="accordion-body small bangla-text bg-light">
+                                    <div class="alert alert-success bangla-text small">
+                                        <i class="fas fa-heart me-2"></i> জীবন বাঁচাতে রক্তদাতা হিসেবে নিবন্ধন করুন
+                                    </div>
+                                    <ol class="list-group list-group-numbered">
+                                        <li class="list-group-item border-0 bg-transparent ps-0">হোম পেইজে
+                                            <strong>"রক্তদাতা নিবন্ধন"</strong> বাটনে ক্লিক করুন</li>
+                                        <li class="list-group-item border-0 bg-transparent ps-0">ফর্মটি পূরণ করুন:
+                                            <ul class="mt-2">
+                                                <li>পূর্ণ নাম ও রক্তের গ্রুপ</li>
+                                                <li><strong>সচল WhatsApp নম্বর</strong> (অবশ্যই প্রদান করুন)</li>
+                                                <li>সর্বশেষ রক্তদানের তারিখ (প্রথমবার হলে ফাঁকা রাখুন)</li>
+                                                <li>বর্তমান ঠিকানা (বিভাগ, জেলা, উপজেলা)</li>
+                                            </ul>
+                                        </li>
+                                        <li class="list-group-item border-0 bg-transparent ps-0"><strong>"নিবন্ধন
+                                                করুন"</strong> বাটনে ক্লিক করুন</li>
+                                        <li class="list-group-item border-0 bg-transparent ps-0">আপনার তথ্য ডাটাবেসে
+                                            সংরক্ষিত হবে</li>
+                                        <li class="list-group-item border-0 bg-transparent ps-0">কেউ আপনার রক্তের গ্রুপ
+                                            চাইলে আপনাকে কল করতে পারবে</li>
+                                    </ol>
+                                    <div class="mt-3 text-center">
+                                        <a href="donor-registration.html" class="btn btn-sm btn-success">
+                                            <i class="fas fa-user-plus me-1"></i> এখনই নিবন্ধন করুন
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- How to Update Donation Date -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed bangla-text fw-medium" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#helpFour">
+                                    <i class="fas fa-calendar-alt me-2 text-info"></i> রক্তদানের তারিখ আপডেট কিভাবে করব?
+                                </button>
+                            </h2>
+                            <div id="helpFour" class="accordion-collapse collapse" data-bs-parent="#helpAccordion">
+                                <div class="accordion-body small bangla-text bg-light">
+                                    <div class="alert alert-info bangla-text small">
+                                        <i class="fas fa-info-circle me-2"></i> রক্তদানের পর ৩ মাস পর আবার রক্ত দিতে
+                                        পারবেন
+                                    </div>
+                                    <ol class="list-group list-group-numbered">
+                                        <li class="list-group-item border-0 bg-transparent ps-0">হোম পেইজে
+                                            <strong>"রক্তদানের তারিখ"</strong> বাটনে ক্লিক করুন</li>
+                                        <li class="list-group-item border-0 bg-transparent ps-0">আপনার <strong>নিবন্ধিত
+                                                মোবাইল নম্বর</strong> লিখুন</li>
+                                        <li class="list-group-item border-0 bg-transparent ps-0">সর্বশেষ রক্তদানের
+                                            <strong>সঠিক তারিখ</strong> নির্বাচন করুন</li>
+                                        <li class="list-group-item border-0 bg-transparent ps-0"><strong>"আপডেট
+                                                করুন"</strong> বাটনে ক্লিক করুন</li>
+                                        <li class="list-group-item border-0 bg-transparent ps-0">সফলভাবে আপডেট হলে
+                                            confirmation message দেখাবে</li>
+                                    </ol>
+                                    <div class="mt-3 text-center">
+                                        <button class="btn btn-sm btn-info" data-bs-toggle="modal"
+                                            data-bs-target="#updateDonationModal">
+                                            <i class="fas fa-calendar-alt me-1"></i> এখনই তারিখ আপডেট করুন
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- How to Report Successful Donation -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed bangla-text fw-medium" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#helpFive">
+                                    <i class="fas fa-check-circle me-2 text-success"></i> সফল রক্তদান রিপোর্ট কিভাবে
+                                    করব?
+                                </button>
+                            </h2>
+                            <div id="helpFive" class="accordion-collapse collapse" data-bs-parent="#helpAccordion">
+                                <div class="accordion-body small bangla-text bg-light">
+                                    <div class="alert alert-success bangla-text small">
+                                        <i class="fas fa-heartbeat me-2"></i> সফল রক্তদান রিপোর্ট করলে আমাদের ডাটাবেস
+                                        আপডেট হয়
+                                    </div>
+                                    <ol class="list-group list-group-numbered">
+                                        <li class="list-group-item border-0 bg-transparent ps-0">হোম পেইজের নিচে
+                                            <strong>"সফল রক্তদান রিপোর্ট করুন"</strong> বাটনে ক্লিক করুন</li>
+                                        <li class="list-group-item border-0 bg-transparent ps-0">অনুরোধকারীর
+                                            <strong>সঠিক মোবাইল নম্বর</strong> লিখুন</li>
+                                        <li class="list-group-item border-0 bg-transparent ps-0">রক্তদাতার
+                                            <strong>নিবন্ধিত মোবাইল নম্বর</strong> লিখুন</li>
+                                        <li class="list-group-item border-0 bg-transparent ps-0">রক্তদানের <strong>সঠিক
+                                                তারিখ</strong> নির্বাচন করুন</li>
+                                        <li class="list-group-item border-0 bg-transparent ps-0"><strong>"জমা
+                                                দিন"</strong> বাটনে ক্লিক করুন</li>
+                                    </ol>
+                                    <div class="mt-3 text-center">
+                                        <button class="btn btn-sm btn-success" data-bs-toggle="modal"
+                                            data-bs-target="#voteDonationModal">
+                                            <i class="fas fa-check-circle me-1"></i> এখনই রিপোর্ট করুন
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Emergency Contact Section -->
+                    <div class="p-3 bg-light border-top">
+                        <div class="row align-items-center">
+                            <div class="col-md-8">
+                                <h6 class="bangla-text mb-1">
+                                    <i class="fas fa-headset me-2 text-primary"></i> জরুরী সাহায্য প্রয়োজন?
+                                </h6>
+                                <p class="small bangla-text mb-0">সরাসরি আমাদের হেল্পলাইনে কল করুন</p>
+                            </div>
+                            <div class="col-md-4 text-end">
+                                <a href="tel:01960506601" class="btn btn-primary w-100 bangla-text">
+                                    <i class="fas fa-phone me-1"></i> 01960506601
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -318,9 +598,15 @@
         <i class="fas fa-phone-alt"></i>
     </a>
 
+    <!-- Back to Top Button -->
+    <a href="#" class="btn btn-danger btn-back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
     <!-- Developer Credit -->
     <div class="text-center mt-4 small text-muted">
-        Developed by MD Tasrik Hossain
+        Developed by MD Tasrik Hossain |
+        <a href="https://www.facebook.com/md.tasrik.hossain" class="text-decoration-none">Contact Developer</a>
     </div>
 
     <!-- Firebase and other scripts -->
@@ -849,6 +1135,22 @@
             });
         });
 
+        // Back to top button functionality
+        document.getElementById('backToTop').addEventListener('click', function (e) {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Show/hide back to top button based on scroll position
+        window.addEventListener('scroll', function () {
+            const backToTopBtn = document.getElementById('backToTop');
+            if (window.pageYOffset > 300) {
+                backToTopBtn.style.display = 'block';
+            } else {
+                backToTopBtn.style.display = 'none';
+            }
+        });
+
         // Function to update time and date separately
         function updateDateTime() {
             const now = new Date();
@@ -900,4 +1202,3 @@
 </body>
 
 </html>
-
