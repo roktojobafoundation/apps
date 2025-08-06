@@ -59,6 +59,27 @@
                         <form id="requestForm" class="needs-validation" novalidate>
                             <div class="row">
                                 <div class="col-md-6 mb-3">
+                                    <label for="contactName" class="form-label">যোগাযোগকারীর নাম</label>
+                                    <input type="text" class="form-control" id="contactName" required>
+                                    <div class="invalid-feedback">যোগাযোগকারীর নাম লিখুন</div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="patientProblem" class="form-label">রোগীর সমস্যা</label>
+                                    <select class="form-select" id="patientProblem" required>
+                                        <option value="" selected disabled>সমস্যা নির্বাচন করুন</option>
+                                        <option value="অপারেশন">অপারেশন</option>
+                                        <option value="দুর্ঘটনা">দুর্ঘটনা</option>
+                                        <option value="ক্যান্সার">ক্যান্সার</option>
+                                        <option value="থ্যালাসেমিয়া">থ্যালাসেমিয়া</option>
+                                        <option value="লিউকেমিয়া">লিউকেমিয়া</option>
+                                        <option value="প্রসূতি রক্তক্ষরণ">প্রসূতি রক্তক্ষরণ</option>
+                                        <option value="অন্যান্য">অন্যান্য</option>
+                                    </select>
+                                    <div class="invalid-feedback">রোগীর সমস্যা নির্বাচন করুন</div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
                                     <label for="requestDivision" class="form-label">বিভাগ</label>
                                     <select class="form-select" id="requestDivision" required>
                                         <option value="" selected disabled>বিভাগ নির্বাচন করুন</option>
@@ -335,6 +356,8 @@
                 }
 
                 const requestData = {
+                    contactName: document.getElementById('contactName').value,
+                    patientProblem: document.getElementById('patientProblem').value,
                     division: document.getElementById('requestDivision').value,
                     district: document.getElementById('requestDistrict').value,
                     upazila: document.getElementById('requestUpazila').value,
@@ -357,7 +380,7 @@
                     await sendBloodRequestNotifications(requestData);
 
                     // Generate WhatsApp message
-                    const whatsappMessage = `রক্তের অনুরোধ নিশ্চিতকরণ:\n\nবিভাগ: ${requestData.division}\nজেলা: ${requestData.district}\nউপজেলা: ${requestData.upazila}\nস্থান: ${requestData.location}\nরক্তের গ্রুপ: ${requestData.bloodGroup}\nপরিমাণ: ${requestData.bloodAmount} ব্যাগ\nযোগাযোগ: ${requestData.phone}\nতারিখ: ${neededDate}\nসময়: ${neededTime}`;
+                    const whatsappMessage = `রক্তের অনুরোধ নিশ্চিতকরণ:\n\nযোগাযোগকারী: ${requestData.contactName}\nরোগীর সমস্যা: ${requestData.patientProblem}\nবিভাগ: ${requestData.division}\nজেলা: ${requestData.district}\nউপজেলা: ${requestData.upazila}\nস্থান: ${requestData.location}\nরক্তের গ্রুপ: ${requestData.bloodGroup}\nপরিমাণ: ${requestData.bloodAmount} ব্যাগ\nযোগাযোগ: ${requestData.phone}\nতারিখ: ${neededDate}\nসময়: ${neededTime}`;
 
                     // Generate WhatsApp link 
                     const whatsappLink = generateWhatsAppLink("8801960506601", whatsappMessage);
@@ -367,8 +390,10 @@
 
                     // Show success message with original phone number
                     document.getElementById('successMessage').textContent =
-                        `রক্তের অনুরোধ সফলভাবে জমা দেওয়া হয়েছে! আপনার রক্তের গ্রুপের উপযুক্ত দাতাদের কাছে SMS এ বিজ্ঞপ্তি পাঠানো হবে।
+                        `রক্তের অনুরোধ সফলভাবে জমা দেওয়া হয়েছে! আপনার রক্তের গ্রুপের উপযুক্ত দাতাদের কাছে বিজ্ঞপ্তি পাঠানো হবে।
              
+            যোগাযোগকারী: ${requestData.contactName}
+            রোগীর সমস্যা: ${requestData.patientProblem}
             অবস্থান: ${requestData.district}, ${requestData.upazila}
             রক্তের গ্রুপ: ${requestData.bloodGroup}
             পরিমাণ: ${requestData.bloodAmount} ব্যাগ
